@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+ <meta charset="UTF-8">
+ <title>Rock Paper Scissors Part 2
+ </title>
+</head>
+
+<body>
+
+ <div id="game">
+
+   <h2>User:</h2><span id="user">___</span>
+   <h2>Computer:</h2><span id="computer">___</span>
+
+   <h2>Result:</h2><span id="result">___</span>
+   <h2># of Games:</h2><span id="games">___</span>
+
+
+   <h2>User Score:</h2><span id="userScore">___</span>
+   <h2>Computer Score:</h2><span id="computerScore">___</span>
+
+ </div>
+
+ <script type="text/javascript">
+
+   // Creates an array that lists out all of the options (Rock, Paper, or Scissors).
+   var computerChoices = ["r", "p", "s"];
+
+
+
+   var userText = document.getElementById("user");
+   var computerText = document.getElementById("computer");
+   var result = document.getElementById("result");
+   var userScore = document.getElementById("userScore");
+   var userScore_count = 0;
+   var computerScore = document.getElementById("computerScore");
+   var computerScore_count = 0;
+   var num_games = document.getElementById("games");
+   var num_games_count = 0;
+   // This function is run whenever the user presses a key.
+   document.onkeyup = function(event) {
+
+     // Determines which key was pressed.
+     var userGuess = event.key;
+
+     // Randomly chooses a choice from the options array. This is the Computer's guess.
+     var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+     // Alerts the key the user pressed (userGuess).
+     userText.textContent = userGuess;
+
+     // alert("User guess: " + userGuess);
+
+     // Alerts the Computer's guess.
+     computerText.textContent = computerGuess;
+     // alert("Computer guess: " + computerGuess);
+
+     if (userGuess == computerGuess) {result.textContent = "Tie!";}
+
+     else if (userGuess == "r") {
+
+         if (computerGuess == "s") {
+           userScore_count = userScore_count + 1;
+           // userScore_count ++;
+           result.textContent = "WIN";
+           console.log(userScore_count);
+         } else if (computerGuess == "p") {
+           computerScore_count = computerScore_count + 1;
+           result.textContent = "YOU LOSE";
+         }
+
+     }
+      else if (userGuess == "p") {
+      if (computerGuess == "r") {
+       userScore_count = userScore_count + 1;
+       result.textContent = "WIN";
+       console.log(userScore_count);
+      } else if (computerGuess == "s") {
+       computerScore_count = computerScore_count + 1;
+       result.textContent = "YOU LOSE";
+      }
+    } else if (userGuess == "s") {
+      if (computerGuess == "p") {
+       userScore_count ++;
+       result.textContent = "WIN";
+      } else if (computerGuess == "r") {
+       computerScore_count = computerScore_count + 1;
+       result.textContent = "YOU LOSE";
+      }
+    } else {
+      result.textContent = "WRONG";
+    }
+
+    num_games_count ++;
+    num_games.textContent = num_games_count;
+    userScore.textContent = userScore_count;
+    computerScore.textContent = computerScore_count;
+   };
+ </script>
+
+</body>
+
+</html>
