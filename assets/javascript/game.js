@@ -8,7 +8,7 @@ var randNum = "";
 var blankArray = [];
 var correctlyGuessedWord = [];
 
-alert("Welcome. You shall not leave") 
+alert("Welcome. You shall not leave. Click okay to Start");
 
 init();
 
@@ -23,6 +23,12 @@ function init() {
     wrongGuesses = [];
     guessesleft = 10;
     randNum = wordBank[Math.floor(Math.random()*wordBank.length)];
+    
+    var life = document.getElementById("remainingGuess");
+    life.innerHTML = guessesleft;
+
+    var wrongletter = document.getElementById("wrongGuess");
+    wrongletter.innerHTML = wrongGuesses;
 
     var display = document.getElementById("wordDisplayed");
     display.innerHTML = randNum;
@@ -56,14 +62,20 @@ document.onkeyup = function(event){
             answerArray.push(userGuess)
         }
 
-        console.log(blankArray);
-        console.log(randNum);
+      
 
-        if (answerArray == blankArray) {
-            alert("asdfjkashdfjk");
+
+
+    
+    if (blankArray.join('') === randNum){
+        wins++
+        var howmanywins = document.getElementById("wins");
+        howmanywins.innerHTML = wins; 
+         alert("You Win");
+
+        init();
         }
 
-        console.log(blankArray.toString());
 
 
     } else { //isMatched == false
@@ -86,3 +98,7 @@ document.onkeyup = function(event){
         }
     }   
 }//document.onkeyup
+
+//use guess.index("_")
+//guess.join('"")
+input.match(/A-Z/gi)
